@@ -5,7 +5,7 @@ export type Recipe = {
   ingredients: string[]
   instructions: string
   sourceUrl: string
-  idMeal: number
+  idMeal: string
   strCategory: string
   strArea: string
   strTags?: string

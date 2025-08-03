@@ -6,6 +6,7 @@ import AboutPage from './Pages/AboutPage'
 import ContactPage from './Pages/ContactPage'
 import RecipeDetails from './Pages/RecipeDetails'
 import Footer from './Components/Footer'
+import FavouritePage from './Pages/FavouritePage'
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path='/about' element={<AboutPage />} />
           <Route path='/contact' element={<ContactPage />} />
           <Route path='/recipe/:id' element={<RecipeDetails />} />
+          <Route path='/favourite' element={<FavouritePage />} />
         </Routes>
       </main>
       <Outlet />

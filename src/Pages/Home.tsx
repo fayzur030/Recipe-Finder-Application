@@ -10,6 +10,7 @@ import {
   getRecipesByArea,
   getRecipesByCategory,
 } from '../api/filter'
+import type { Recipe } from '../Types/recipes'
 
 const Home: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState<string>('')
@@ -73,7 +74,7 @@ const Home: React.FC = () => {
         <p>No recipes found</p>
       ) : (
         <div className='grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 max-w-7xl mx-auto'>
-          {recipes.map((recipe) => (
+          {recipes.map((recipe: Recipe) => (
             <RecipesCart key={recipe.idMeal} item={recipe} />
           ))}
         </div>
