@@ -65,11 +65,12 @@ const Home: React.FC = () => {
             label='Filter by Category'
             options={categories}
             selectedOption={selectedCategory}
-            onchangeHandler={(val) => {
-              setSelectedCategory(val)
-              setSearchTerm('')
-              setSelectedArea('')
-            }}
+            onchangeHandler={setSelectedCategory}
+            // onchangeHandler={(val) => {
+            //   setSelectedCategory(val)
+            //   setSearchTerm('')
+            //   setSelectedArea('')
+            // }}
           />
         </div>
         <div className='flex-1 font-medium'>
@@ -77,11 +78,12 @@ const Home: React.FC = () => {
             label='Filter by Area'
             options={Areas}
             selectedOption={selectedArea}
-            onchangeHandler={(val) => {
-              setSelectedArea(val)
-              setSearchTerm('')
-              setSelectedCategory('')
-            }}
+            onchangeHandler={setSelectedArea}
+            // onchangeHandler={(val) => {
+            //   setSelectedArea(val)
+            //   setSearchTerm('')
+            //   setSelectedCategory('')
+            // }}
           />
         </div>
       </div>
@@ -103,7 +105,12 @@ const Home: React.FC = () => {
       ) : (
         <div className='grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 max-w-7xl mx-auto'>
           {recipes.map((recipe: Recipe) => (
-            <RecipesCart key={recipe.idMeal} item={recipe} />
+            <div
+              key={recipe.idMeal}
+              className='transform transition-transform duration-300 hover:scale-105 hover:shadow-lg rounded-lg'
+            >
+              <RecipesCart item={recipe} />
+            </div>
           ))}
         </div>
       )}
