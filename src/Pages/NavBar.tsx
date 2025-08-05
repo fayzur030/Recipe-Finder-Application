@@ -1,5 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import logo from '../assets/logo.png'
 
 const NavBar: React.FC = () => {
   const menuItems = [
@@ -16,9 +17,9 @@ const NavBar: React.FC = () => {
         <div className='flex items-center justify-between w-full lg:w-auto'>
           <div className='flex items-center gap-3 text-2xl font-bold text-orange-600 tracking-wide'>
             <img
-              src='/src/assets/logo.png'
+              src={logo}
               alt='logo'
-              className='w-10 h-10 rounded-full object-cover border-2 border-white shadow-md'
+              className='w-12 h-12 rounded-full object-cover border-2 border-orange-100 shadow-lg'
             />
             <span className='text-shadow-sm'>Recipe Finder</span>
           </div>
