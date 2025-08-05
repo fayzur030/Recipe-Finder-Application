@@ -6,16 +6,21 @@ import { useQuery } from '@tanstack/react-query'
 import {
   getAreas,
   getCategories,
+  getRandomRecipe,
   getRecipe,
   getRecipesByArea,
   getRecipesByCategory,
 } from '../api/filter'
 import type { Recipe } from '../Types/recipes'
+import RandomRecipeModal from '../Components/RandomRecipeModal'
+import HeroPage from './HeroPage'
 
 const Home: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState<string>('')
   const [selectedCategory, setSelectedCategory] = useState<string>('')
   const [selectedArea, setSelectedArea] = useState<string>('')
+  const [randomRecipe, setRandomRecipe] = useState(null)
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
   const { data: categories = [] } = useQuery({
     queryKey: ['categories'],
@@ -35,13 +40,27 @@ const Home: React.FC = () => {
     },
   })
 
+  const handleRandomClick = async () => {
+    const result = await getRandomRecipe()
+    setRandomRecipe(result)
+    setIsModalOpen(true)
+  }
+  const onClose = () => {
+    setIsModalOpen(false)
+  }
+
   return (
-    <div className='bg-white max-w-6xl mx-auto rounded-lg shadow p-4 flex-1 text-black'>
+    <div className='bg-[#F6F1RD] max-w-6xl mx-auto rounded-lg shadow p-4 flex-1 text-black'>
+      <RandomRecipeModal
+        isModalOpen={isModalOpen}
+        onClose={onClose}
+        recipe={randomRecipe}
+      />
       <div className='flex flex-col md:flex-row md:items-end md:space-x-6 mb-6 '>
         <div className='flex-1 mb-4 md:mb-0'>
           <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
         </div>
-        <div className='flex-1 '>
+        <div className='flex-1 font-medium '>
           <FilterDropDown
             label='Filter by Category'
             options={categories}
@@ -53,7 +72,7 @@ const Home: React.FC = () => {
             }}
           />
         </div>
-        <div className='flex-1 '>
+        <div className='flex-1 font-medium'>
           <FilterDropDown
             label='Filter by Area'
             options={Areas}
@@ -65,6 +84,15 @@ const Home: React.FC = () => {
             }}
           />
         </div>
+      </div>
+      <button
+        className='bg-gradient-to-r from-orange-500 to-pink-500 text-white px-4 py-2 rounded-lg shadow-lg hover:scale-105 hover:shadow-xl transition-all duration-300 text-lg font-semibold mb-6'
+        onClick={handleRandomClick}
+      >
+        Surprise!
+      </button>
+      <div className='mb-5'>
+        <HeroPage />
       </div>
       {isLoading ? (
         <div className='flex justify-center mt-10'>

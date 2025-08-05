@@ -14,4 +14,5 @@ export type Recipe = {
   strInstructions: string
   strMeal: string
   strMealThumb: string
+  strYoutube: string
 }

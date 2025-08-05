@@ -12,6 +12,7 @@ const RecipesCart = ({ item }: props) => {
   const addFav = useFavouriteStore((state) => state.addFav)
   const removeFav = useFavouriteStore((state) => state.removeFav)
   const isFav = favourites.some((fav) => fav.idMeal === item.idMeal)
+  // console.log(item)
 
   const toggleFav = () => {
     if (isFav) {
@@ -22,7 +23,7 @@ const RecipesCart = ({ item }: props) => {
   }
 
   return (
-    <div className='border hover:scale-[1.02] duration-300 p-4 relative rounded-lg shadow-md dark:text-black w-full  md:w-auto'>
+    <div className='border bg-[#F8F8F6] hover:scale-[1.02] duration-300 p-4 relative rounded-lg shadow-md dark:text-black w-full  md:w-auto'>
       <img
         src={item.strMealThumb}
         alt={item.strMealThumb}
@@ -30,9 +31,14 @@ const RecipesCart = ({ item }: props) => {
       />
       <div className='p-2'>
         <h2 className='text-xl font-semibold mb-2'>{item.strMeal}</h2>
+        <p className='font-thin'>Category: {item.strCategory}</p>
+        <p className='font-thin'>Area: {item.strArea}</p>
+
         <div>
           <Link to={`/recipe/${item.idMeal}`}>
-            <button className='mt-4 btn btn-success'>View Recipe</button>
+            <button className='mt-4 w-full btn bg-orange-600 hover:bg-[#5D9C6B] rounded-full text-yellow-50 font-normal'>
+              View Recipe Details
+            </button>
           </Link>
         </div>
         <button

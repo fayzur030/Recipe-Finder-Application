@@ -16,9 +16,7 @@ const FilterDropDown: React.FC<FilterDropDownProps> = ({
           onChange={(e) => onchangeHandler(e.target.value)}
           className='p-2 border rounded-full  focus:outline-none focus:ring-2 focus:ring-green-500 transition duration-300   dark:border-gray-400 w-full'
         >
-          <option value='' className=''>
-            All
-          </option>
+          <option value=''>All</option>
           {options.map((opt: string) => (
             <option value={opt} key={String(opt)}>
               {opt}

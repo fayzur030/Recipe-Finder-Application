@@ -14,13 +14,14 @@ function App() {
       <div>
         <Header />
       </div>
+
       <main>
         {/* <h1 className='text-2xl font-semibold text-center py-4'>Our Recipes</h1> */}
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/about' element={<AboutPage />} />
           <Route path='/contact' element={<ContactPage />} />
-          <Route path='/recipe/:id' element={<RecipeDetails />} />
+          <Route path='/recipe/:idMeal' element={<RecipeDetails />} />
           <Route path='/favourite' element={<FavouritePage />} />
         </Routes>
       </main>
